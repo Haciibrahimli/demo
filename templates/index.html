@@ -3,11 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>DemoProject</title>
 </head>
 <body>
-    <h3>{{age}}</h3>
-    <h3>{{year}}</h3>
-    
+     {% for i in p %}
+    <h3><a href="{% url 'detail' i.id %}">{{i.name}} </a></h3>
+    <h3>{{i.surname}}</h3>
+    <h3>{{i.age}}</h3>
+    <h3>{{i.add_date}}</h3>
+    <h3>{{i.upp_date}}</h3>
+     {% endfor %}
+     {% if p.has_previous %}
+     <a href="?page={{ p.number|add:'-1' }}">Evvelki  </a>
+     {% endif %}
+{% if p.number > 1 %}
+<a href="?page={{ p.number|add:'-1' }}">{{p.number|add:"-1"}} </a>
+{% endif %}
+ 
+<a href="?page={{ p.number}}"> {{p.number}} </a>
+{% if p.has_next %}
+<a href="?page={{ p.number|add:'1' }}">{{ p.number|add:"1" }}  </a>
+<a href="?page={{ p.number|add:'1' }}">Sonraki  </a>
+{% endif %}
 </body>
 </html>
