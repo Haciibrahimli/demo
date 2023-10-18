@@ -26,6 +26,8 @@ def index_view(request):
 
  return render(request,'index.html',context)
 
+
+
 def detail_index(request, id):
  
  my_obj = MyModel.objects.get(id=id)
@@ -36,7 +38,5 @@ def detail_index(request, id):
 
  }
  
- 
-
  return render(request,'detail.html',context)
 
